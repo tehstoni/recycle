@@ -21,6 +21,8 @@ def main():
 
     shellcode = read_input_file(args.input)
     
+    print(shellcode[:100] + "...")
+
     write_output_file(args.output, shellcode)
 
 if __name__ == "__main__":
