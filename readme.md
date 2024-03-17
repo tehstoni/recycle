@@ -1,4 +1,4 @@
-# Python Data Recycler Tool
+# Python Shellcode to Bin Tool
 
 This tool, `recycle.py`, is crafted to read the contents of an input file, cleanse it by removing specific characters, and transform the data into a sanitized hexadecimal string. This string is then written to an output file. It's particularly useful for data sanitization and preparation in contexts where hexadecimal representation is required.
 
