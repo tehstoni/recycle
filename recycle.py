@@ -1,11 +1,18 @@
 import argparse
+import re
 
 def convert_string_to_bytes(shellcode_string):
-    # First, ensure we remove all occurrences of "\x" which are not part of the hex value
-    # Then, filter out any non-hexadecimal characters that may have sneaked into our incantation
-    hex_string = ''.join(shellcode_string.split("\\x")[1:])
-    hex_string = ''.join(filter(lambda x: x in '0123456789abcdefABCDEF', hex_string))
-    # Now convert what remains into raw bytes
+    # Normalize different hex representations to a single format and remove unwanted characters
+    # Remove double quotes, semicolons, and non-hex characters that are not part of the hex format
+    cleaned_shellcode_string = re.sub(r'[";]', '', shellcode_string)  # Remove double quotes and semicolons
+    
+    # Further, remove any text that does not match hex patterns
+    hex_pattern = re.compile(r'\\?0?x([0-9A-Fa-f]+)|([0-9A-Fa-f]{2})')
+    matches = hex_pattern.findall(cleaned_shellcode_string)
+    # Concatenate all matched hex values, ensuring we only keep valid hex characters
+    hex_string = ''.join(match[0] if match[0] else match[1] for match in matches)
+    
+    # Convert the cleaned hex string into raw bytes
     return bytes.fromhex(hex_string)
 
 def main():
