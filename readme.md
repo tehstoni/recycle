@@ -7,11 +7,11 @@ Prerequisites
 
 ## Usage
 
-    Clone the repository or download the shellcode_converter.py script.
+    Clone the repository or download the recycle.py script.
     Run the script using Python:
 
 ```bash
-python shellcode_converter.py -i input_file.txt -o output_file.bin
+python recycle.py -i input_file.txt -o output_file.bin
 ```
 
 Replace input_file.txt with the path to your input file containing shellcode in a string format, and output_file.bin with the desired name for the output file where the raw shellcode bytes will be written.
@@ -31,7 +31,7 @@ Suppose you have an input file named shellcode.txt containing shellcode represen
 You can convert this shellcode into raw bytes and write them to an output file named shellcode.bin using the following command:
 
 ```bash
-python shellcode_converter.py -i shellcode.txt -o shellcode.bin
+python recycle.py -i shellcode.txt -o shellcode.bin
 ```
 
 This will create a file named shellcode.bin containing the raw bytes of the shellcode.
